@@ -12,16 +12,16 @@ import os
 
 google = oauth.register(
     name='google',
-    client_id=os.getenv(""),
-    client_secret=os.getenv(""),
+    client_id=os.getenv("GOOGLE_CLIENT_ID"),
+    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
     server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
     client_kwargs={
         'scope': 'openid email profile'
     }
 )
 
-client = genai.Client(api_key=os.getenv(""))
-groq_client = Groq(api_key=os.getenv(""))
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 @app.route('/')
 def home():
     return render_template('home.html')
