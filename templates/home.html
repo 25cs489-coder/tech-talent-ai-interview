@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK AI Interview</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(to right,#ffffff,#f3f3f3);
+    color:#111;
+}
+html{
+    scroll-behavior:smooth;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:black;
+    position:relative;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    background:gold;
+    left:0;
+    bottom:-5px;
+    transition:.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+.btn{
+    background:black;
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.4s;
+    display:inline-block;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15),
+    0 0 20px rgba(255,215,0,0.3);
+}
+
+.box:hover{
+    transform:translateY(-10px);
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.15),
+    0 0 20px rgba(255,215,0,0.2);
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.8);
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(212,175,55,0.6);
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li{
+    cursor:pointer;
+    font-weight:500;
+}
+
+.btn{
+    background:black;
+    color:white;
+    padding:10px 20px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:80px;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero h1{
+    font-size:48px;
+}
+
+.hero p{
+    margin-top:10px;
+    color:#555;
+}
+
+.hero img{
+    width:420px;  /* BIGGER IMAGE */
+    border-radius:15px;
+}
+
+/* SIDE CONTENT */
+.side{
+    display:flex;
+    justify-content:space-between;
+    padding:60px 80px;
+    gap:40px;
+}
+
+.box{
+    width:48%;
+    background:#fafafa;
+    padding:30px;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* SECTION */
+.section{
+    padding:60px;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.card{
+    width:240px;
+    padding:25px;
+    background:#fff;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* CONTACT */
+.contact{
+    padding:60px;
+    text-align:center;
+    background:#fafafa;
+}
+
+.contact p{
+    margin:10px 0;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#777;
+}
+.announcement{
+    width:100%;
+    background:linear-gradient(
+        90deg,
+        #000000,
+        #1a1a1a,
+        #d4af37,
+        #f5d76e,
+        #d4af37,
+        #1a1a1a,
+        #000000
+    );
+
+    color:#ffffff;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+
+    border-top:1px solid #d4af37;
+    border-bottom:1px solid #d4af37;
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,0.5),
+        0 0 20px rgba(212,175,55,0.3);
+}
+
+.scroll-text{
+    display:inline-block;
+    padding-left:100%;
+    animation:scroll-left 20s linear infinite;
+    text-shadow:
+        0 0 5px rgba(255,215,0,0.6),
+        0 0 10px rgba(255,215,0,0.4);
+}
+
+@keyframes scroll-left{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+</style>
+</head>
+
+<body>
+   <div class="announcement">
+    <div class="scroll-text">
+        ----------> SK AI IS READY TO LAUNCH....  | PREMIUM AI-POWERED INTERVIEW PRACTICE PLATFORM | REAL-TIME QUESTION GENERATION | INSTANT FEEDBACK & PERFORMANCE ANALYSIS 
+    </div>
+</div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <img src="https://plain-apac-prod-public.komododecks.com/202606/21/Vo1mKDDL6DexcR9xu0ON/image.png">
+        <span>SK TECH-TALENT</span>
+    </div>
+
+   <ul>
+<li><a href="#" onclick="event.stopPropagation(); showAbout()">About Us</a></li>
+   
+   <li> <a href="#" onclick="event.stopPropagation(); showTips()">Tips</a></li>
+
+<li><a href="#" onclick="event.stopPropagation(); showFuture()">Future</a></li>
+
+<li><a href="#" onclick="event.stopPropagation(); showPlan()">Plan</a></li>
+  
+</ul>
+
+    <a href="/login" style="text-decoration:none;">
+    <div class="btn">Start</div>
+</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>AI Interview Practice System</h1>
+        <p>Improve your confidence, communication, and interview performance using AI-based practice sessions.</p>
+        <br>
+       <a href="/login" style="text-decoration:none;">
+    <div class="btn">Start</div>
+</a>
+    </div>
+
+    <img src="https://cdn-res.keymedia.com/cms/images/ca/126/0446_638844685605017153.png">
+</section>
+
+<!-- SIDE CONTENT -->
+<section class="side">
+
+    <div class="box">
+        <h2>Why Practice Interviews?</h2>
+        <p>
+            Practicing interviews helps you gain confidence, improve communication, and understand 
+            how to answer questions effectively. AI-based practice allows repeated learning without pressure.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>What You Will Learn</h2>
+        <p>
+            You will learn how to structure answers, manage time, handle tricky questions, 
+            and present yourself confidently in any interview situation.
+        </p>
+    </div>
+
+</section>
+
+<!-- TIPS -->
+<section class="section">
+    <h2>Interview Tips</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Be Clear</h3>
+            <p>Give structured answers</p>
+        </div>
+
+        <div class="card">
+            <h3>Stay Calm</h3>
+            <p>Confidence is important</p>
+        </div>
+
+        <div class="card">
+            <h3>Practice Daily</h3>
+            <p>Consistency improves skill</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- PLAN -->
+<section class="section">
+    <h2>Plan</h2>
+
+    <div class="cards">
+       <div class="card">
+    <h3>Interview Practice</h3>
+    <p>Practice unlimited interview questions with AI assistance.</p>
+</div>
+
+<div class="card">
+    <h3>Performance Evaluation</h3>
+    <p>Receive detailed feedback and improvement suggestions.</p>
+</div>
+
+<div class="card">
+    <h3>Career Growth</h3>
+    <p>Improve communication, confidence, and technical skills.</p>
+</div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+    <h2>Contact</h2>
+    <p>Email: sk.2008.pro@gmail.com</p>
+    <p>LinkedIn: www.linkedin.com/in/srikanth-s-b730203b2</p>
+</section>
+
+<footer>
+    © 2026 SK AI Interview System
+</footer>
+<div id="aboutPopup" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+width:500px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+z-index:1000;
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+    <h2>About SK AI Interview System</h2>
+
+    <span onclick="closeAbout()" style="
+    cursor:pointer;
+    font-size:30px;
+    font-weight:bold;
+    color:#666;">
+        ×
+    </span>
+
+</div>
+
+<p>
+SK AI Interview System helps students prepare for technical and HR interviews using Artificial Intelligence.
+</p>
+
+<br>
+
+<p>
+✔ AI Generated Questions<br>
+✔ Real-Time Interview Practice<br>
+✔ Performance Evaluation<br>
+✔ Future Voice-Based Interviews
+</p>
+
+<br>
+
+
+
+</div>
+<div id="tipsPopup" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+width:550px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+z-index:1000;
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+<h2>Interview Tips</h2>
+
+<span onclick="closeTips()" style="
+cursor:pointer;
+font-size:30px;
+font-weight:bold;
+color:#666;">
+×
+</span>
+
+</div>
+
+<br>
+
+<p>✔ Read the question carefully before answering.</p>
+<p>✔ Start with a simple definition or explanation.</p>
+<p>✔ Explain the concept step-by-step.</p>
+<p>✔ Give a real-world example whenever possible.</p>
+<p>✔ Review your answer before moving to the next question.</p>
+
+</div>
+<div id="futurePopup" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+width:550px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+z-index:1000;
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+<h2>Future Enhancements</h2>
+
+<span onclick="closeFuture()" style="
+cursor:pointer;
+font-size:30px;
+font-weight:bold;
+color:#666;">
+×
+</span>
+
+</div>
+
+<br>
+
+<p>✔ Voice-Based AI Interviews.</p>
+<p>✔ Detailed Performance Analytics Dashboard.</p>
+<p>✔ Skill-Wise Scoring and Progress Tracking.</p>
+<p>✔ Personalized AI Feedback Reports.</p>
+<p>✔ Personalized Learning Paths for Each User.</p>
+
+
+
+
+
+
+
+
+</div>
+<div id="PlanPopup" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+width:650px;
+max-height:80vh;
+overflow-y:auto;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+z-index:1000;
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+    <h2>Development Plan</h2>
+
+    <span onclick="closePlan()" style="
+    cursor:pointer;
+    font-size:30px;
+    font-weight:bold;
+    color:#666;">
+        ×
+    </span>
+
+</div>
+
+<br>
+
+<p> ✔Our mission is to build a complete AI-powered interview preparation platform.</p>
+
+<br>
+<p> ✔Design and develop the AI Interview System interface.</p>
+<p>✔Generate skill-based interview questions using AI.</p>
+<p> ✔Implement answer evaluation and scoring.</p>
+<p> ✔Provide personalized feedback and suggestions.</p>
+<p> ✔Create a complete AI career preparation platform.</p>
+
+<br>
+<p><b> ✔Goal:</b> Help students and professionals crack interviews with confidence using AI-powered practice.</p>
+
+</div>
+
+<script>
+
+function showAbout(){
+    document.getElementById("aboutPopup").style.display = "block";
+}
+
+function closeAbout(){
+    document.getElementById("aboutPopup").style.display = "none";
+}
+function showTips(){
+    document.getElementById("tipsPopup").style.display="block";
+}
+
+function closeTips(){
+    document.getElementById("tipsPopup").style.display="none";
+}
+function showFuture(){
+    document.getElementById("futurePopup").style.display="block";
+}
+
+function closeFuture(){
+    document.getElementById("futurePopup").style.display="none";
+}
+function showPlan(){
+    document.getElementById("PlanPopup").style.display = "block";
+}
+
+function closePlan(){
+    document.getElementById("PlanPopup").style.display = "none";
+}
+
+
+
+
+
+</script>
+<script>
+
+document.addEventListener("click", function(){
+
+    document.getElementById("aboutPopup").style.display = "none";
+    document.getElementById("tipsPopup").style.display = "none";
+    document.getElementById("futurePopup").style.display = "none";
+    document.getElementById("PlanPopup").style.display = "none";
+
+});
+
+</script>
+
+
+</body>
+</html>

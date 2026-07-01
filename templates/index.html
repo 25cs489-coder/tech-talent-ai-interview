@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK AI Interview System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffffff,#f5f7fa);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Floating Background */
+
+.bg-circle{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:-1;
+}
+
+.circle1{
+    width:300px;
+    height:300px;
+    background:#60a5fa;
+    top:-100px;
+    left:-100px;
+}
+
+.circle2{
+    width:250px;
+    height:250px;
+    background:#c084fc;
+    bottom:-100px;
+    right:-100px;
+}
+
+.circle3{
+    width:220px;
+    height:220px;
+    background:#93c5fd;
+    top:45%;
+    left:45%;
+}
+
+/* Navbar */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 80px;
+}
+
+.logo-text{
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo-text span{
+    color:#2563eb;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav ul li{
+    cursor:pointer;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li:hover{
+    color:#2563eb;
+}
+
+/* Main */
+
+.container{
+     width:100%;
+    min-height:auto;
+
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+
+    padding:40px 80px;
+}
+
+/* Left */
+
+.left{
+    max-width:650px;
+}
+
+.tag{
+    display:inline-block;
+
+    background:white;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    margin-bottom:25px;
+}
+
+.left h1{
+    font-size:64px;
+    line-height:1.15;
+    color:#111827;
+}
+
+.left p{
+    margin-top:20px;
+    font-size:18px;
+    color:#6b7280;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    margin-top:35px;
+}
+
+.primary-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:50px;
+    margin-right:15px;
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+}
+
+.secondary-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:#111;
+    border:2px solid #ddd;
+    padding:15px 30px;
+    border-radius:50px;
+}
+
+/* Stats */
+
+.stats{
+    display:flex;
+    gap:25px;
+    margin-top:45px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+    background:white;
+    padding:20px;
+    width:140px;
+    text-align:center;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.stat-box h2{
+    color:#2563eb;
+}
+
+.stat-box span{
+    color:#777;
+    font-size:14px;
+}
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+}
+.hero-text{
+    width:50%;
+    margin-top:120px;
+}
+
+.hero-image{
+    width:50%;
+    text-align:right;
+    margin-top:120px;
+}
+.hero-image img{
+    width:500px;
+    max-width:100%;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    transition:.4s;
+}
+
+.hero-image img:hover{
+    transform:translateY(-5px);
+}
+.trust-section{
+    margin-top:40px;
+}
+
+.trust-box{
+    background:white;
+    padding:20px;
+    margin-bottom:18px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.trust-box:hover{
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.15);
+}
+
+.trust-box h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.trust-box p{
+    margin:0;
+    font-size:15px;
+    color:#6b7280;
+    line-height:1.7;
+}
+
+/* Right */
+
+.card{
+    width:500px;
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+    border:1px solid rgba(255,255,255,.5);
+}
+
+.logo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+    box-shadow:0 10px 30px rgba(37,99,235,.25);
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#6b7280;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:16px;
+
+    border:1px solid #ddd;
+    border-radius:14px;
+
+    margin-top:15px;
+
+    font-size:15px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+}
+
+.google-btn{
+    width:100%;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+    );
+
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.google-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.3);
+}
+.right-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.top-feature{
+    width:500px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.feature-img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.image-content{
+    margin-top:15px;
+}
+
+.image-content h3{
+    font-size:32px;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.image-content p{
+    font-size:16px;
+    color:#6b7280;
+    line-height:1.7;
+}
+
+.footer{
+    margin-top:20px;
+    color:#777;
+    font-size:13px;
+}
+
+.tech{
+    margin-top:12px;
+    font-size:12px;
+    color:#aaa;
+}
+
+/* Animation */
+
+.hero-img{
+    width:500px;
+    margin-top:30px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:1100px){
+
+.container{
+    flex-direction:column;
+    text-align:center;
+}
+
+.left h1{
+    font-size:42px;
+}
+
+.card{
+    width:100%;
+    max-width:500px;
+    margin-top:50px;
+}
+
+.stats{
+    justify-content:center;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+<div class="bg-circle circle3"></div>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left">
+
+        <h1>
+        Master Your Interviews
+        With AI Intelligence
+        </h1>
+
+        <p>
+        Practice technical and HR interviews, receive instant AI evaluation,
+        improve communication skills, and build confidence for your dream job.
+        </p>
+
+        <div class="trust-section">
+
+            <div class="trust-box">
+                <h3># Smart AI Interviews</h3>
+                <p>
+                Experience realistic technical and HR interviews generated
+                by advanced AI models designed to prepare you for real-world hiring.
+                </p>
+            </div>
+
+            <div class="trust-box">
+                <h3># Instant Performance Analysis</h3>
+                <p>
+                Receive detailed feedback and improvement suggestions
+                immediately after every interview session.
+                </p>
+            </div>
+
+            <div class="trust-box">
+                <h3># Build Career Confidence</h3>
+                <p>
+                Improve communication, confidence, and problem-solving skills
+                through unlimited practice.
+                </p>
+            </div>
+
+            <div class="trust-box">
+                <h3>🛡 24/7 AI Support</h3>
+                <p>
+                Our AI Interview System is available anytime, anywhere
+                for continuous learning.
+                </p>
+            </div>
+
+        </div>
+
+        <img
+        class="hero-img"
+        src="https://cdn-res.keymedia.com/cms/images/ca/126/0446_638844685605017153.png">
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-section">
+
+        <div class="top-feature">
+
+            <img
+            src="https://blog.evalgator.com/wp-content/uploads/2024/04/Generative-AI-Transformation.png"
+            class="feature-img">
+
+            <div class="image-content">
+
+                <h3>AI-Powered Interview Success</h3>
+
+                <p>
+                Practice smarter with AI-generated interview questions,
+                instant feedback, personalized guidance, and real-time
+                performance tracking designed to help you succeed in every interview.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <img
+            src="https://plain-apac-prod-public.komododecks.com/202606/21/Vo1mKDDL6DexcR9xu0ON/image.png"
+            class="logo">
+
+            <h2>Welcome Back</h2>
+
+            <p class="subtitle">
+            Start your AI Interview Journey
+            </p>
+
+            <form action="/login" method="POST">
+
+                <input
+                type="text"
+                name="name"
+                placeholder="Enter Your Name"
+                required>
+
+                <a href="/google-login">
+
+                    <button
+                    type="button"
+                    class="google-btn">
+
+                    🔵 Continue with Google
+
+                    </button>
+
+                </a>
+
+            </form>
+
+            <div class="footer">
+            © 2026 SK AI Interview System
+            </div>
+
+            <div class="tech">
+            Powered by Google Gemini • Groq • Flask • AI
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

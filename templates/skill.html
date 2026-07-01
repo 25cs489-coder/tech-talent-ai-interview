@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Interview System</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at top left,#2563eb 0%,transparent 25%),
+    radial-gradient(circle at top right,#8b5cf6 0%,transparent 25%),
+    radial-gradient(circle at bottom left,#06b6d4 0%,transparent 20%),
+    linear-gradient(
+        135deg,
+        #020617,
+        #050816,
+        #0f172a,
+        #111827
+    );
+
+    color:white;
+}
+
+.main-wrapper{
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:50px 80px;
+}
+
+/* LEFT SIDE */
+
+.left-section{
+    width:45%;
+}
+
+.welcome-tag{
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    margin-bottom:30px;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.left-section h1{
+    font-size:65px;
+    line-height:1.1;
+    margin-bottom:25px;
+    text-align:left;
+}
+
+.left-section h1 span{
+    color:#a855f7;
+}
+
+.hero-desc{
+    color:#cbd5e1;
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.feature-box{
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    padding:20px;
+
+    border-radius:18px;
+
+    transition:.3s;
+}
+
+.feature-box:hover{
+    transform:translateY(-5px);
+
+    border-color:#3b82f6;
+
+    box-shadow:0 0 25px rgba(59,130,246,.25);
+}
+
+.feature-box h3{
+    margin-bottom:12px;
+}
+
+.feature-box p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.quote-box{
+    margin-top:30px;
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.06);
+
+    border-left:4px solid #06b6d4;
+
+    color:#67e8f9;
+
+    font-size:22px;
+    font-weight:600;
+}
+
+.hero-image{
+    width:420px;
+    margin-top:35px;
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+/* RIGHT CARD */
+
+.container{
+
+    width:700px;
+
+    background:rgba(5,10,25,.82);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:35px;
+
+    padding:45px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 40px rgba(59,130,246,.25),
+    0 0 80px rgba(139,92,246,.18);
+}
+
+.logo{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.container h1{
+    margin-top:15px;
+    font-size:42px;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    margin-top:10px;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+
+    margin-bottom:10px;
+    margin-top:20px;
+
+    font-size:17px;
+    font-weight:600;
+}
+
+select{
+    width:100%;
+
+    padding:18px 22px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:17px;
+
+    outline:none;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    margin-bottom:10px;
+}
+
+option{
+    background:#111827;
+    color:white;
+}
+.logo{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+    margin:0 auto 15px;
+
+    box-shadow:
+        0 0 5px #a855f7,
+        0 0 10px #3b82f6;
+
+    border:1px solid rgba(255,255,255,.2);
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+select:focus{
+    box-shadow:0 0 20px rgba(59,130,246,.4);
+}
+
+.start-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    color:white;
+
+    font-size:20px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed,
+    #ec4899
+    );
+
+    transition:.3s;
+}
+.left-section h1{
+    font-size:60px;
+    line-height:1.1;
+    margin-bottom:20px;
+
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #a855f7,
+        #06b6d4
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.welcome-tag{
+    background:rgba(37,99,235,.2);
+    color:#60a5fa;
+    border:1px solid #60a5fa;
+}
+
+.feature-box{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(96,165,250,.3);
+    color:white;
+    font-weight:600;
+}
+
+.feature-box:nth-child(1){
+    color:#60a5fa;
+}
+
+.feature-box:nth-child(2){
+    color:#34d399;
+}
+
+.feature-box:nth-child(3){
+    color:#f59e0b;
+}
+
+.feature-box:nth-child(4){
+    color:#a855f7;
+}
+
+.info-section h3{
+    color:#fbbf24;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.hero-desc{
+    color:#e2e8f0;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.start-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 30px rgba(59,130,246,.4),
+    0 0 60px rgba(236,72,153,.3);
+}
+
+.features{
+
+    margin-top:35px;
+
+    color:#cbd5e1;
+}
+.corner-robot{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:100;
+}
+
+.corner-robot img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    animation:float 3s ease-in-out infinite;
+    filter:drop-shadow(0 0 15px #60a5fa);
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+.features h3{
+    margin-bottom:15px;
+    color:white;
+}
+.robot-section{
+    width:25%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.robot-image{
+    width:380px;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 40px rgba(96,165,250,.6));
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.features p{
+    margin-bottom:10px;
+}
+
+.footer{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    color:#94a3b8;
+}
+
+/* GLOW EFFECTS */
+
+.glow{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(140px);
+    z-index:-1;
+}
+.brand-title{
+    margin-top:20px;
+    font-size:42px;
+    font-weight:800;
+
+    background:linear-gradient(
+    90deg,
+    #60a5fa,
+    #a855f7,
+    #ec4899
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.brand-subtitle{
+    color:#cbd5e1;
+    margin-top:8px;
+    font-size:16px;
+    letter-spacing:1px;
+}
+h2{
+    font-size:38px;
+    font-weight:700;
+    background:linear-gradient(90deg,#00f5ff,#8b5cf6,#ff4fd8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:8px;
+}
+
+.card-title{
+    font-size:48px;
+    font-weight:800;
+    background:linear-gradient(90deg,#00f5ff,#4f46e5,#d946ef);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.subtitle{
+    color:#c084fc;
+    font-size:18px;
+    font-weight:600;
+}
+
+label{
+    color:#00f5ff;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+p{
+    color:#dbeafe;
+}
+.welcome-text{
+    font-size:40px;
+    font-weight:800;
+    background:linear-gradient(90deg,#00f5ff,#8b5cf6,#ff4fd8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.brand-title{
+    font-size:52px;
+    font-weight:900;
+    background:linear-gradient(90deg,#00f5ff,#3b82f6,#d946ef);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 30px rgba(139,92,246,.5);
+}
+
+.glow1{
+    width:350px;
+    height:350px;
+    background:#2563eb;
+
+    top:-120px;
+    left:-120px;
+}
+
+.glow2{
+    width:350px;
+    height:350px;
+    background:#8b5cf6;
+
+    right:-120px;
+    top:120px;
+}
+
+.glow3{
+    width:300px;
+    height:300px;
+    background:#06b6d4;
+
+    bottom:-120px;
+    left:40%;
+}
+
+/* MOBILE */
+
+@media(max-width:1200px){
+
+    .main-wrapper{
+        flex-direction:column;
+        gap:50px;
+    }
+
+    .left-section{
+        width:100%;
+    }
+
+    .container{
+        width:100%;
+    }
+
+    .left-section h1{
+        font-size:45px;
+    }
+}
+</style>
+</head>
+<body>
+    
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
+
+<div class="main-wrapper">
+    
+    <!-- LEFT CONTENT -->
+    
+    <div class="left-section">
+
+        <div class="welcome-tag">
+             AI Interview Practice Platform
+            </div>
+            
+            <h1>
+                Master Your <br>
+            Interviews With AI
+        </h1>
+        
+        <p>
+            Prepare for technical, coding, aptitude, and HR interviews
+            using AI-powered simulations. Receive instant feedback,
+            improve confidence, and get ready for your dream job.
+        </p>
+        
+        <div class="feature-grid">
+            
+            <div class="feature-box">
+                🤖 AI Questions
+            </div>
+            
+            <div class="feature-box">
+                📊 Live Analysis
+            </div>
+            
+            <div class="feature-box">
+                🎤 Voice Interviews
+            </div>
+
+            <div class="feature-box">
+                🚀 Career Growth
+            </div>
+            
+        </div>
+        
+        <div class="info-section">
+            
+            <h3>Why Choose SK AI Interview?</h3>
+
+            <p>
+                Experience realistic interview environments powered by
+                Artificial Intelligence. Practice anytime, improve
+                communication skills, strengthen technical knowledge,
+                and gain confidence before attending real company
+                interviews.
+            </p>
+
+        </div>
+        
+        <img
+        class="hero-image"
+        src="https://media.licdn.com/dms/image/v2/D4E12AQFZ5j7383x_Uw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1731487524975?e=2147483647&v=beta&t=Gg5VtY-NHIIJXFD3qQnidoaGVNQybVMaWWWf5GkD6ew">
+        
+    </div>
+    
+
+    <!-- RIGHT CARD -->
+    <div class="corner-robot">
+        <img
+        src="https://cdnai.iconscout.com/ai-image/premium/thumb/ai-boy-waving-hand-3d-illustration-png-download-jpg-13227892.png"
+        alt="AI Robot">
+    </div>
+
+    <div class="container">
+
+        <div style="text-align:center;">
+
+            <img
+            src="https://plain-apac-prod-public.komododecks.com/202606/21/Vo1mKDDL6DexcR9xu0ON/image.png"
+            class="logo">
+
+            <h2 style="margin-top:15px;">
+                Welcome, {{ session['name'] }} 
+            </h2>
+
+            <p style="color:#cbd5e1;">
+                {{ session.get('email') }}
+            </p>
+
+            <h1 style="font-size:32px;margin-top:15px;">
+                SK AI Interview
+            </h1>
+
+            <p class="subtitle">
+                Practice • Improve • Get Hired
+            </p>
+
+        </div>
+
+        <form action="/interview" method="POST">
+
+            <label>Select Skill</label>
+
+            <select name="skill">
+
+                <option>--- Select Skill ---</option>
+                <option>Python</option>
+                <option>Python Flask</option>
+                <option>Python Django</option>
+                <option>Machine Learning</option>
+                <option>Data Science</option>
+                <option>Artificial Intelligence</option>
+                <option>C</option>
+                <option>C++</option>
+                <option>Java</option>
+                <option>Java Spring Boot</option>
+                <option>Data Structures</option>
+                <option>Web Development</option>
+
+            </select>
+
+            <label>Select Interview Type</label>
+
+            <select name="type">
+
+                <option>--- Select Type ---</option>
+                <option>Technical Interview</option>
+                <option>HR Interview</option>
+                <option>Coding Round</option>
+                <option>Aptitude Test</option>
+                <option>Problem Solving</option>
+
+            </select>
+
+            <button class="start-btn" type="submit">
+                🚀 Start Interview
+            </button>
+
+        </form>
+
+       
+
+        <div class="footer">
+            © 2026 SK AI Interview System
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
