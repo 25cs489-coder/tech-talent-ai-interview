@@ -251,7 +251,7 @@ Feedback: AI service unavailable.
 @app.route('/google-login')
 def google_login():
     return google.authorize_redirect(
-        redirect_uri="http://127.0.0.1:5000/callback"
+        redirect_uri="https://tech-talent-ai-interview.onrender.com/callback"
     )
     # ADD STEP 8 HERE
 @app.route('/callback')
